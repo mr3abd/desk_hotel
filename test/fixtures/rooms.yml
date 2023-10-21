@@ -3,7 +3,7 @@
 # Table name: rooms
 #
 #  id           :bigint           not null, primary key
-#  capacity     :integer
+#  capacity     :integer          default(5)
 #  description  :text
 #  price        :decimal(, )
 #  created_at   :datetime         not null

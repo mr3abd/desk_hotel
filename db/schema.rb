@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_21_192121) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "amount", default: "0.0"
-    t.integer "guests_count"
+    t.integer "guests_count", default: 1
     t.index ["room_id"], name: "index_reservations_on_room_id"
     t.index ["start_date", "end_date"], name: "index_reservations_on_start_date_and_end_date"
   end
@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_21_192121) do
 
   create_table "rooms", force: :cascade do |t|
     t.text "description"
-    t.integer "capacity"
+    t.integer "capacity", default: 5
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -5,7 +5,7 @@
 #  id           :bigint           not null, primary key
 #  amount       :decimal(, )      default(0.0)
 #  end_date     :date
-#  guests_count :integer
+#  guests_count :integer          default(1)
 #  start_date   :date
 #  status       :integer          default("active")
 #  created_at   :datetime         not null

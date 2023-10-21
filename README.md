@@ -1,24 +1,16 @@
 # README
+Firstly , this project mini API'S collection to handle hotel app handle reservation and manage room
+-   Install app
+```ruby
+bundle install && rails db:create && rails db:migrate
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- run seeds
+you can run seed data from here
+```ruby
+rake db:seed
+```
+- Ruby version
+make sure you have ruby (3.2.2)
+- Swagger api's can check /api-docs
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
