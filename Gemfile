@@ -61,7 +61,6 @@ group :development, :test do
   gem 'rubocop-rails', '=2.5.2', require: false
   gem 'rubocop-performance', '=1.5.2', require: false
   gem 'rubocop-rspec', '=1.38.1', require: false
-  gem 'overcommit', '~> 0.49.0'
   gem 'shoulda-matchers'
 
 end
