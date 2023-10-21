@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   scope 'api/v1' do
     resources :room
+    resources :room_type, only: :index
     devise_for :users, path_names: {
       sign_in: 'login',
       sign_out: 'logout',

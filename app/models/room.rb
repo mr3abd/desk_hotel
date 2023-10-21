@@ -22,4 +22,19 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Room < ApplicationRecord
+  include Filterable
+
+  # Validations
+  validates :price, presence: true
+
+  # Association
+  belongs_to :user
+  belongs_to :room_type
+  has_many :reservations
+
+  # Scopes
+  scope :filter_by_room_type_id, ->(room_type_id) { where room_type_id: room_type_id }
+  scope :filter_by_price_gt, ->(price_gt) { where price: price_gt.. }
+  scope :filter_by_price_less, ->(price_less) { where price: ..price_less }
+
 end
