@@ -31,10 +31,11 @@ gem "jbuilder"
 gem "redis", "~> 4.0"
 
 gem 'devise'
+gem 'devise-jwt'
 gem 'cancancan'
 gem 'rswag-api'
 gem 'rswag-ui'
-
+gem 'rails_admin', '~> 3.0'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -85,3 +86,6 @@ group :test do
   gem "selenium-webdriver"
 
 end
+gem "cssbundling-rails"
+gem "cssbundling-rails"
+gem "cssbundling-rails"
