@@ -3,6 +3,7 @@
 # Table name: reservations
 #
 #  id         :bigint           not null, primary key
+#  amount     :decimal(, )      default(0.0)
 #  end_date   :date
 #  start_date :date
 #  status     :integer

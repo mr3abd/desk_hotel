@@ -9,6 +9,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  role                   :integer          default("read")
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -27,5 +28,6 @@ class User < ApplicationRecord
          :recoverable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
   self.skip_session_storage = %i[http_auth params_auth]
+  enum role: { read: 0, create_room: 1 , mangae: 2 }
 
 end

@@ -6,11 +6,15 @@ class Ability
   def initialize(user)
     # Define abilities for the user here. For example:
       room ||= Room.new
-      return unless user.present?
-      can :read, :all
+      return unless user.read? || user.create_room? || user.mangae?
+      can :read, Room
 
-      return unless room.user == user
-      can :update, Room
+      return unless user.create_room? || user.mangae?
+      can :create, Room
+
+      return unless user.mangae?
+      can :create, Reservation
+
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

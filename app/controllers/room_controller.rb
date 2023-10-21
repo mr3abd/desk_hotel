@@ -3,6 +3,8 @@ class RoomController < ApiController
   def index
     pagy_option, rooms = pagy(Room.filter(room_filter_params), page: pagination_params[:page],
     items: pagination_params[:per_page])
+    authorize! :read, rooms
+
       render json:
                  RoomSerializer.new(rooms).serializable_hash.merge!(
                     info: {
@@ -14,6 +16,8 @@ class RoomController < ApiController
 
   def create
     room = current_user.build_room(room_params)
+    authorize! :create, room
+
     if room.save
       render json: RoomSerializer.new(room).serializable_hash, status: :ok
     else

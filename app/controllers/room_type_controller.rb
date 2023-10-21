@@ -9,6 +9,6 @@ class RoomTypeController < ApplicationController
                       items: pagy_option.items, pages: pagy_option.pages
                     }
       ), status: :ok
-  end
+
   end
 end
