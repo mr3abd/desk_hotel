@@ -1,4 +1,4 @@
-class RoomTypeController < ApplicationController
+class RoomTypeController < ApiController
   def index
     pagy_option, room_types = pagy(RoomType.all, page: pagination_params[:page],
     items: pagination_params[:per_page])

@@ -1,9 +1,9 @@
 require 'swagger_helper'
 
 describe 'Room API' do
-  path '/api/v1/room' do
-    post 'create room' do
-      tags 'rooms'
+  path '/api/v1/reservation' do
+    post 'create reservation' do
+      tags 'reservation'
       consumes 'application/json'
       parameter({
         in: :header,
@@ -12,37 +12,37 @@ describe 'Room API' do
         required: true,
         description: 'user Barer token'
       })
-      parameter name: :room, in: :body, schema: {
+      parameter name: :reservation, in: :body, schema: {
         type: :object,
         properties: {
-          room: {
+          reservation: {
             type: :object,
             description: 'user mail ',
             properties: {
-              description: {
-                type: :string,
+              room_id: {
+                type: :integer,
                 description: '',
-                example: 'details for room'
+                example: 'room id'
               },
-              price: {
-                type: :decimal,
-                description: 'price room',
-                example: 20
-              },
-              capacity: {
+              guests_count: {
                 type: :integer,
+                description: 'guests count',
+                example: 2
+              },
+              end_date: {
+                type: :string,
                 description: 'capacity count guests',
-                example: 3
+                example: '2022-10-10'
               },
-              room_type_id: {
-                type: :integer,
-                example: 1
+              start_date: {
+                type: :string,
+                example: '2022-10-1'
               }
             }
           }
         }
       }
-      response '200', 'Login Success' do
+      response '200', 'reservation Success' do
         schema type: :object,
                properties: {
                  id: { type: :integer },
@@ -53,19 +53,18 @@ describe 'Room API' do
         run_test!
       end
 
-      response '401', 'Login Failed' do
+      response '401', 'reservation Failed' do
         run_test!
       end
     end
     get 'list of rooms' do
-      tags 'rooms'
+      tags 'reservation'
       consumes 'application/json', 'application/xml'
 
       parameter name: :per_page, in: :query, type: :string, required: false, example: 10
       parameter name: :page, in: :query, type: :string, required: true, example: 1
-      parameter name: :price_gt, in: :query, type: :integer, required: false, example: 1
-      parameter name: :price_less, in: :query, type: :integer, required: false, example: 5
-      parameter name: :room_type_id, in: :query, type: :integer, required: false
+      parameter name: :start_date, in: :query, type: :integer, required: false, example: 1
+      parameter name: :end_date, in: :query, type: :integer, required: false, example: 5
       parameter({
         in: :header,
         type: :string,
@@ -81,7 +80,8 @@ describe 'Room API' do
   end
 
   path '/api/v1/room/{id}' do
-    get 'get room info' do
+
+    put 'update room info' do
       tags 'rooms'
       consumes 'application/json', 'application/xml'
 
@@ -92,56 +92,40 @@ describe 'Room API' do
         required: true,
         description: 'user Barer token'
       })
-      parameter name: :id, in: :path, type: 'integer', required: true
-
-      response '200', 'room Success' do
-        run_test!
-      end
-
-      response '404', 'room Not Found' do
-        run_test!
-      end
-    end
-    put 'update room info' do
-      tags 'rooms'
-      consumes 'application/json', 'application/xml'
-      parameter name: :room, in: :body, schema: {
+      parameter name: :reservation, in: :body, schema: {
         type: :object,
         properties: {
-          room: {
+          reservation: {
             type: :object,
             description: 'user mail ',
             properties: {
-              description: {
-                type: :string,
+              room_id: {
+                type: :integer,
                 description: '',
-                example: 'details for room'
+                example: 'room id'
               },
-              price: {
-                type: :decimal,
-                description: 'price room',
-                example: 20
-              },
-              capacity: {
+              guests_count: {
                 type: :integer,
+                description: 'guests count',
+                example: 2
+              },
+              end_date: {
+                type: :string,
                 description: 'capacity count guests',
-                example: 3
+                example: '2022-10-10'
               },
-              room_type_id: {
-                type: :integer,
-                example: 1
+              start_date: {
+                type: :string,
+                example: '2022-10-1'
+              },
+              status: {
+                type: :string,
+                exampe: 'cancel'
               }
             }
           }
         }
       }
-      parameter({
-        in: :header,
-        type: :string,
-        name: 'Authorization',
-        required: true,
-        description: 'user Barer token'
-      })
     end
   end
 

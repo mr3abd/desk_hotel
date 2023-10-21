@@ -28,6 +28,7 @@ class User < ApplicationRecord
          :recoverable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
   self.skip_session_storage = %i[http_auth params_auth]
-  enum role: { read: 0, create_room: 1 , mangae: 2 }
+  enum role: { read: 0, create_room: 1 , manage: 2 }
+  has_many :rooms
 
 end

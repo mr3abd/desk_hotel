@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   scope 'api/v1' do
+    resources :reservation, only: %i[create index update]
     resources :room
     resources :room_type, only: :index
     devise_for :users, path_names: {
