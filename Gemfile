@@ -33,9 +33,11 @@ gem "redis", "~> 4.0"
 gem 'devise'
 gem 'devise-jwt'
 gem 'cancancan'
+gem 'rswag'
 gem 'rswag-api'
 gem 'rswag-ui'
-gem 'rails_admin', '~> 3.0'
+gem 'pagy'
+gem 'jsonapi-serializer'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
@@ -63,14 +65,15 @@ group :development, :test do
   gem 'rubocop-performance', '=1.5.2', require: false
   gem 'rubocop-rspec', '=1.38.1', require: false
   gem 'shoulda-matchers'
-
+  gem 'rswag-specs'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem 'annotate'
-  gem 'rswag-specs'
 
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]

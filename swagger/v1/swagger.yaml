@@ -1,0 +1,295 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "HotelDesk API DOC",
+    "version": "v1"
+  },
+  "components": {
+    "securityDefinitions": {
+      "Bearer": {
+        "description": "...",
+        "type": "apiKey",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "paths": {
+    "/api/v1/users/login.json": {
+      "post": {
+        "summary": "User Login",
+        "tags": [
+          "users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "required": [
+                "email",
+                "password"
+              ],
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "description": "user mail ",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "description": "user mail",
+                      "example": "email@haider.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "description": "user password",
+                      "example": "123456789"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login Success",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "attributes": {
+                  "type": "hash"
+                }
+              },
+              "required": [
+                "id",
+                "attributes"
+              ]
+            }
+          },
+          "401": {
+            "description": "Login Failed"
+          }
+        }
+      }
+    },
+    "/api/v1/users/signup.json": {
+      "post": {
+        "summary": "User SignUp",
+        "tags": [
+          "users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "required": [
+                "email",
+                "password"
+              ],
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "description": "user mail ",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "description": "user mail",
+                      "example": "email@haider.com"
+                    },
+                    "password": {
+                      "type": "string",
+                      "description": "user password",
+                      "example": "123456789"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SignUp Success"
+          },
+          "422": {
+            "description": "SignUp Failed"
+          }
+        }
+      }
+    },
+    "/api/v1/users/signup": {
+      "delete": {
+        "summary": "User delete",
+        "tags": [
+          "users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "password",
+            "in": "query",
+            "type": "string",
+            "required": true,
+            "example": "Rh1A8Lfic6q"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Deleted Success"
+          },
+          "422": {
+            "description": "Deleted Failed"
+          }
+        }
+      }
+    },
+    "/api/v1/users/logout": {
+      "delete": {
+        "summary": "User Logout",
+        "tags": [
+          "users"
+        ],
+        "consumes": [
+          "application/json",
+          "application/xml"
+        ],
+        "security": [
+          {
+            "Bearer": {
+            }
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "type": "string",
+            "name": "Authorization",
+            "required": true,
+            "description": "Client token"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Logout Success"
+          },
+          "401": {
+            "description": "Logout Failed"
+          }
+        }
+      }
+    },
+    "/api/v1/users/password": {
+      "post": {
+        "summary": " Forget Password Request",
+        "tags": [
+          "users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "required": [
+                "email"
+              ],
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "description": "user mail ",
+                  "properties": {
+                    "email": {
+                      "type": "string",
+                      "description": "user mail",
+                      "example": "email@haider.com"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Forget password Success"
+          },
+          "422": {
+            "description": "Failed"
+          }
+        }
+      },
+      "patch": {
+        "summary": " Rest Password Request",
+        "tags": [
+          "users"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "required": [
+                "password",
+                "reset_password_token",
+                "password_confirmation"
+              ],
+              "properties": {
+                "user": {
+                  "type": "object",
+                  "description": "user details ",
+                  "properties": {
+                    "reset_password_token": {
+                      "type": "string",
+                      "description": "user mail ",
+                      "example": "TOKEN_HERE"
+                    },
+                    "password": {
+                      "type": "string",
+                      "description": "user password",
+                      "example": "123456789"
+                    },
+                    "password_confirmation": {
+                      "type": "string",
+                      "description": "user password",
+                      "example": "123456789"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Rest password Success"
+          },
+          "422": {
+            "description": "Failed"
+          }
+        }
+      }
+    }
+  }
+}
