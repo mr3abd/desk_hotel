@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   scope 'api/v1' do
+    resources :room
     devise_for :users, path_names: {
       sign_in: 'login',
       sign_out: 'logout',

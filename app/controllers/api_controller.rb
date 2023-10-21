@@ -1,5 +1,6 @@
 class ApiController < ActionController::API
   include Pagy::Backend
+  before_action :authenticate_user!
   respond_to :json
   rescue_from ActiveRecord::RecordNotFound, with: :resource_not_found
   rescue_from ActionController::ParameterMissing, with: :params_missing
