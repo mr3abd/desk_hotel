@@ -57,7 +57,7 @@ class Reservation < ApplicationRecord
 
     errors.add(:base, "that dates unlogic") unless start_date < end_date
 
-    unvalid_reservation = room.reservations.where(start_date: start_date.., end_date: ..end_date).exists?
+    unvalid_reservation = room.reservations.where(status: :active, start_date: start_date.., end_date: ..end_date).exists?
 
     errors.add(:base, "that unvalid dates") if unvalid_reservation
   end
